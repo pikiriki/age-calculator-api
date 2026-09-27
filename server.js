@@ -21,6 +21,11 @@ const server = http.createServer((req, res) => {
   const birthYear = Number(birthYearInput);
   const currentYear = Number(currentYearInput);
 
+  if (Number.isNaN(birthYear) || Number.isNaN(currentYear)) {
+    res.end("Please provide valid numbers for both years.");
+    return;
+  }
+
   
 
   const differenceAge = currentYear - birthYear;
