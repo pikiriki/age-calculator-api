@@ -26,7 +26,10 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  
+  if (birthYear > currentYear) {
+    res.end("birthYear cannot be greater than currentYear.");
+    return;
+  }
 
   const differenceAge = currentYear - birthYear;
   const message = `Your age is ${differenceAge}`;
