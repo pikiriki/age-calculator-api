@@ -22,7 +22,10 @@ const server = http.createServer((req, res) => {
 
   console.log("Converted birth year plus one:", birthYear + 1); 
 
-  res.end("Hello Backend");
+  const differenceAge = currentYear - birthYear;
+  const message = `Your age is ${differenceAge}`;
+
+  res.end(message)
 });
 
 server.listen(3000, () => {
