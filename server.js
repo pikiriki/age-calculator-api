@@ -8,19 +8,20 @@ const server = http.createServer((req, res) => {
   const birthYearInput = url.searchParams.get("birthYear");
   const currentYearInput = url.searchParams.get("currentYear");
 
-  console.log("Birth year input:", birthYearInput);
-  console.log("Current year input:", currentYearInput);
-
-  console.log("Birth year type:", typeof birthYearInput);
-  console.log("Current year type:", typeof currentYearInput);
+  if (
+    birthYearInput === null ||
+    currentYearInput === null ||
+    birthYearInput === "" ||
+    currentYearInput === ""
+  ) {
+    res.end("Please provide both birthYear and currentYear.");
+    return;
+  }
 
   const birthYear = Number(birthYearInput);
   const currentYear = Number(currentYearInput);
 
-  console.log("Converted birth year type:", typeof birthYear);
-  console.log("Converted current year type:", typeof currentYear);
-
-  console.log("Converted birth year plus one:", birthYear + 1); 
+  
 
   const differenceAge = currentYear - birthYear;
   const message = `Your age is ${differenceAge}`;
